@@ -1,8 +1,6 @@
 import time
 from win32api import GetSystemMetrics
 import schedule
-import time
-from datetime import datetime
 import pyglet
 from win32api import GetMonitorInfo, MonitorFromPoint
 import os
@@ -44,11 +42,13 @@ def set_topmost(hw):
 # To show program has started
 print("Task Scheduled")
 
-'''Getting screen dimensions'''
+#Getting Taskbar Height
 monitor_info = GetMonitorInfo(MonitorFromPoint((0, 0)))
 monitor_area = monitor_info.get("Monitor")
 work_area = monitor_info.get("Work")
 taskbar_height = monitor_area[3]-work_area[3]
+
+'''Getting screen dimensions'''
 Width = GetSystemMetrics(0)
 Height = GetSystemMetrics(1)
 
@@ -69,6 +69,7 @@ water_drinking_message = " Stay Hydrated "
 # loads the icons
 icon_location = 'C:/Users/yatigupta/Documents/Arpit/Batch/icon1.jpg'
 gif_location = 'C:/Users/yatigupta/Documents/Arpit/Batch/'
+
 icons = [
     # for the title bar
     pyglet.image.load(icon_location),
@@ -92,6 +93,7 @@ water_gif_name = water_gif_name.split("=", 1)[1]
 water_gif_name = water_gif_name.strip()
 
 water_animation = pyglet.image.load_animation(gif_location + water_gif_name)
+# ANimation object that is used on window
 water_animSprite = pyglet.sprite.Sprite(water_animation)
 	 
 scale_x = min(popup_width, water_animSprite.width)/max(popup_width, water_animSprite.width)
@@ -159,6 +161,8 @@ def drinking_popupmsg(msg):
 	                          x=window.width//2, y=window.height//2,
 	                          anchor_x='right', anchor_y='center', bold=True)
 
+	label.width = text_width
+	label.multiline = True
 	# label = pyglet.text.HTMLLabel(
 	#     '<font face="Times New Roman" size="4" style="background-color: #FFFF00">{msg}</font>'.format(msg=msg),
 	#     x=window.width//2, y=window.height//2,
@@ -312,8 +316,8 @@ def blinking_popupmsg(msg):
 #schedule.every(eye_interval).minutes.do(blinking_popupmsg,eye_message)
 #schedule.every(water_drinking_interval).minutes.do(drinking_popupmsg,water_drinking_message)
 
-#drinking_popupmsg(water_drinking_message)
-blinking_popupmsg(eye_message)
+drinking_popupmsg(water_drinking_message)
+#blinking_popupmsg(eye_message)
 '''Keeping script running'''
 #while True:
  #   schedule.run_pending()
