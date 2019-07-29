@@ -1,0 +1,2 @@
+water gif = water.gif
+Blink gif = blink.gif
