@@ -67,8 +67,8 @@ water_drinking_interval = 1/6
 water_drinking_message = " Stay Hydrated "
 
 # loads the icons
-icon_location = 'C:/Users/yatigupta/Documents/Arpit/Batch/icon1.jpg'
-gif_location = 'C:/Users/yatigupta/Documents/Arpit/Batch/'
+icon_location = 'C:/Documents/Github/Break-Popup/icon.jpg'
+gif_location = 'C:/Documents/Github/Break-Popup/'
 
 icons = [
     # for the title bar
@@ -85,7 +85,7 @@ icons = [
 ]
 
 '''Reading gifs from text file'''
-f = open("C:/Users/yatigupta/Documents/Arpit/Batch/gifs.txt", "r")
+f = open("C:/Documents/Github/Break-Popup/gifs.txt", "r")
 
 '''Drinking water variables'''
 water_gif_name = f.readline()
